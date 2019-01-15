@@ -22,8 +22,8 @@ def main():
 
     #run_test_simple_t()
     #run_test_set_colors()
-    run_test_move_by()
-    # run_test_clone()
+    #run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -170,6 +170,10 @@ class CapitalT(object):
         #   and *** NO OTHER INSTANCE VARIABLES. ***
         #   Note: Implement   attach_to   before testing this __init__ method.
         # ---------------------------------------------------------------------
+        self.intersection_center = intersection_center
+        self.width = width
+        self.height = height
+        self.letter_thickness = letter_thickness
         self.h_rect = rg.Rectangle(rg.Point(intersection_center.x-0.5*width,intersection_center.y-0.5*letter_thickness),rg.Point(intersection_center.x+0.5*width,intersection_center.y+0.5*letter_thickness))
         self.v_rect = rg.Rectangle(rg.Point(intersection_center.x-0.5*letter_thickness,intersection_center.y-letter_thickness*0.5),rg.Point(intersection_center.x+0.5*letter_thickness,intersection_center.y-0.5*letter_thickness+height))
     def attach_to(self, window):
@@ -294,7 +298,7 @@ class CapitalT(object):
           :rtype: CapitalT
         """
         # ---------------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -306,8 +310,9 @@ class CapitalT(object):
         # IMPORTANT RESTRICTION: You are NOT permitted to add any instance
         # variables beyond  h_rect  and  v_rect, at any point of this exercise.
         #######################################################################
-        
-
+        newCapitalT = CapitalT(self.intersection_center,self.width,self.height,self.letter_thickness)
+        newCapitalT.set_colors(self.v_rect.fill_color,self.v_rect.outline_color)
+        return newCapitalT
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
